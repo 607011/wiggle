@@ -22,17 +22,12 @@ if (CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
 endif()
 
 add_executable(wiggle 
-    wiggle/main.cpp
+    src/main.cpp
 )
 
 find_library(CORE_GRAPHICS_LIBRARY CoreGraphics REQUIRED)
 find_library(APPLICATION_SERVICES_LIBRARY ApplicationServices REQUIRED)
 find_library(IOKIT_LIBRARY IOKit REQUIRED)
-
-option(WITH_FADER "Enable display fading" ON)
-if(WITH_FADER)
-    add_definitions(-DWITH_FADER)
-endif()
 
 target_link_libraries(wiggle
     ${CORE_GRAPHICS_LIBRARY}
